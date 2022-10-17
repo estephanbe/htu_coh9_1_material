@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+
+    <style>
+        div {
+            font-size: 50px;
+            color: black;
+        }
+
+        #t_1 {
+            color: red;
+        }
+
+        .option_1 {
+            color: blueviolet;
+        }
+
+        #t_2 {
+            color: chocolate;
+        }
+
+        #t_3 {
+            color: green;
+        }
+
+        .khawa {
+            color: darkcyan !important;
+        }
+
+        #box-model-demo {
+            padding: 5px;
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            /* border-width: 14px; */
+            /* border-color: #a8c7a8; */
+            /* border-style: groove; */
+            border: 5px solid blue;
+        }
+
+        #position-demo {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="t_1" class="option_1">test1</div>
+    <!-- <div id="t_2" class="option_1" style="color: cornflowerblue;">Inline test</div>
+    <div id="t_3" class="option_1 khawa" style="color:brown">Inline test with important</div>
+    <div class="option_1">test2</div> -->
+    <div id="position-demo"></div>
+    <div id="box-model-demo">test3</div>
+    <!-- <div id="units-demo">
+        <div id="child">Units Demo</div>
+    </div> -->
+
+</body>
+
+</html>

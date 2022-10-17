@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fuzzy Bubbles', cursive;
+        }
+
+        /* body {
+            background-image: url("./test.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        } */
+
+        * {
+            color: black;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        span {
+            text-decoration: line-through;
+        }
+
+        .purple-color {
+            color: purple;
+        }
+
+        .blue-color {
+            color: blue;
+        }
+
+        .sub-font-1 {
+            font-size: 15px;
+        }
+
+        #myAnchorTag {
+            text-decoration: line-through;
+        }
+
+        .ammar {
+            font-size: 30px;
+        }
+
+        footer ul li a span {
+            color: blue;
+        }
+
+        #test span {}
+
+        h2+a {
+            font-size: 100px;
+        }
+
+        #direct-child-example>li>a {
+            color: red;
+        }
+
+        form input:focus {
+            color: red;
+        }
+
+        h1:hover {
+            font-size: 40px;
+        }
+
+        ul li:last-child {
+            color: gray;
+        }
+
+        p:not(#test) {
+            font-weight: bold;
+        }
+
+        p::selection {
+            background-color: red;
+        }
+
+        /* p {
+            user-select: none;
+        } */
+
+        p::first-letter {
+            font-size: 50px;
+        }
+    </style>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <h1>Welcome to <span>PHP</span> CSS Class!</h1>
+
+    <p style="color:red;">This <span>CSS</span> demo!</p>
+    <a href="https://google.com" id="myAnchorTag" class="purple-color sub-font-1">Google</a>
+    <h2 class="purple-color">Sub title</h2>
+    <h2 class="blue-color">Sub <span>title</span> 2</h2>
+    <a href="">testing adjacent</a>
+    <h2 class="blue-color sub-font-1">Sub title 3</h2>
+    <form action="">
+        <a href="">after for</a>
+        <label for="">Name: </label>
+        <input type="text">
+    </form>
+
+    <img src="" alt="">
+
+
+    <p id="test" class="ammar">This is Ammar's <span>example</span></p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+
+    </p>
+
+
+    <ul id="direct-child-example">
+        <li>
+            <a href="">
+                home page
+                <ul>
+                    <li>
+                        <a href="">drop down</a>
+                    </li>
+                </ul>
+            </a>
+        </li>
+        <li>
+            <a href="">about us</a>
+        </li>
+    </ul>
+
+
+</body>
+
+</html>

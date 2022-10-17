@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Flexbox</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #container {
+            width: 100vw;
+            height: 70vh;
+            display: flex;
+            /* flex-direction: column; */
+            flex-wrap: wrap;
+        }
+
+        #child1 {
+            background-color: red;
+        }
+
+        #child2 {
+            background-color: green;
+        }
+
+        #child3 {
+            background-color: blue;
+        }
+
+        .box-size {
+            /* width: 40%; */
+            width: 40%;
+            height: 40%;
+            font-size: 150%;
+            color: #fff;
+        }
+
+        #mobileView {
+            display: none;
+        }
+
+        @media screen and (max-width: 500px) {
+            #child1 {
+                background-color: yellow;
+            }
+
+            .box-size {
+                width: 100%
+            }
+
+            #mobileView {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            #child1 {
+                background-color: yellow;
+            }
+
+            .box-size {
+                width: 100%
+            }
+
+            #mobileView {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>FlexBox</h1>
+
+    <h2 id="mobileView">Your are surfing our website from your mobile</h2>
+
+    <div id="container">
+        <div id="child1" class="box-size">1</div>
+        <div id="child2" class="box-size">2</div>
+        <div id="child3" class="box-size">3</div>
+    </div>
+
+</body>
+
+</html>

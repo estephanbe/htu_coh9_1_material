@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Google Search Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Google Search</h1>
+        <p>Seach with google using our website!</p>
+    </header>
+    <main>
+        <form action="https://google.com/search" method="GET">
+            <div>
+                <label for="gsearch">Search Term</label>
+                <input type="search" name="q" id="gsearch">
+            </div>
+            <button type="submit">
+                Search!
+            </button>
+        </form>
+
+    </main>
+
+
+
+
+    <!-- 
+        How it work:
+        - user enter the search term.
+        - if the method is Get:
+            - the browser takes the "action" value: https://google.com/search
+            - the browser (client) append the name (q) to the action value: https://google.com/search?q={user_input}
+            - the browser submits the action appended with the name value to the server of the domain. (https://google.com)
+     -->
+
+</body>
+
+</html>
