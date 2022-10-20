@@ -90,3 +90,18 @@ form#htu-search {
     border-radius: 20px;
     border: 2px solid #808080a1;
 }
+
+form#htu-search button {
+    border: none;
+    background-color: transparent;
+    margin: -5%
+}
+
+form#htu-search button:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+form#htu-search i {
+    font-size: 150%;
+}
