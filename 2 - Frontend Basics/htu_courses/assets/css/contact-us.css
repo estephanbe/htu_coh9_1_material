@@ -1,0 +1,37 @@
+.htu-about-us #htu-hero {
+    height: 40vh;
+}
+
+.htu-about-us #htu-hero h1 {
+    height: 40vh;
+    font-size: 3rem;
+}
+
+main {
+    margin: 5rem 10rem;
+    font-size: 1.5rem;
+}
+
+main form div {
+    margin-bottom: 2rem;
+}
+
+main form label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+main form input,
+main form textarea {
+    font-size: 1.3rem;
+    width: 40%;
+}
+
+main form button {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    width: 15%;
+    background-color: #5a9def;
+    border: 1.5px solid #cacaca;
+    border-radius: 10px;
+}

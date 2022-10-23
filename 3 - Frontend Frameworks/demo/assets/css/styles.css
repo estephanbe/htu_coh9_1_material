@@ -1,0 +1,27 @@
+#htu-hero {
+    background-image: url("../images/home_bg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#htu-hero>div>div {
+    background-color: rgba(240, 240, 240, .9);
+}
+
+#htu-search-course button {
+    margin-left: -20%;
+}
+
+#htu-search-course button:hover {
+    background-color: transparent;
+    color: black;
+}
+
+main {
+    margin: 4rem 15rem;
+}
+
+#htu-courses-wrapper .card {
+    width: 100%;
+}
