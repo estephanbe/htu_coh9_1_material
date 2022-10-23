@@ -1,3 +1,35 @@
 body {
     margin: 0;
 }
+
+footer {
+    background-color: black;
+    color: #f8f8f8;
+    padding: .4rem;
+}
+
+footer p {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #htu-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #htu-hero #htu-slogan {
+        font-size: 1rem;
+    }
+
+    #htu-hero #htu-search>input {
+        font-size: 1rem;
+    }
+
+    #htu-hero #htu-search>button {
+        margin-left: -12%;
+    }
+
+    #htu-courses-container div.htu-course {
+        width: 100%;
+    }
+}
