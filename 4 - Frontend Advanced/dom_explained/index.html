@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demo</title>
+    <style>
+        /* h1 {
+            color: red
+        }
+
+        .header-tag {
+            color: red;
+        }
+
+        #main-head {
+            color: red;
+        } */
+
+        img {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="main-head" class="header-tag">DOM Demo</p>
+    <p id="main-head2" class="header-tag">DOM Demo</p>
+    <p id="main-head3">DOM Demo</p>
+
+
+    <img id="demo-image" src="https://sienaconstruction.com/wp-content/uploads/2017/05/test-image.jpg" alt="">
+
+
+    <script>
+        let paragraphs = document.getElementsByTagName('p');
+        let p_by_id = document.getElementById('main-head');
+        let p_by_class = document.getElementsByClassName('header-tag');
+
+        let image = document.getElementById('demo-image');
+        image.src = "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png";
+        p_by_id.textContent = "new text!";
+    </script>
+</body>
+
+</html>
