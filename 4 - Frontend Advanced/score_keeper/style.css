@@ -1,0 +1,13 @@
+.container {
+    background-color: white;
+}
+
+#players-container {
+    font-size: 1.5rem;
+}
+
+#winner {
+    display: none;
+    padding: 3rem;
+    background-color: yellow;
+}

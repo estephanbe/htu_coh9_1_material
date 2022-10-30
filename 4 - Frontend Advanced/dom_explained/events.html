@@ -25,12 +25,19 @@
 <body>
     <h1>DOM Events</h1>
 
-    <input type="text" id="input-box" onchange="printDataToTheConsole()">
+    <div style="margin-bottom: 3rem;">
+        <input type="text" id="input-box" onchange="printDataToTheConsole(this)">
+    </div>
 
     <button onclick="changeBoxColor()">
         Change Box Color
     </button>
+    <button id="hide-box">
+        Hide Box
+    </button>
     <div id="box"></div>
+
+
 
 
     <script src="events.js"></script>
