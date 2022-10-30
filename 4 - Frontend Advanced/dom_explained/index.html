@@ -30,6 +30,10 @@
     <p id="main-head2" class="header-tag">DOM Demo</p>
     <p id="main-head3">DOM Demo</p>
 
+    <ul id="htu-list">
+
+    </ul>
+
 
     <img id="demo-image" src="https://sienaconstruction.com/wp-content/uploads/2017/05/test-image.jpg" alt="">
 
@@ -39,9 +43,40 @@
         let p_by_id = document.getElementById('main-head');
         let p_by_class = document.getElementsByClassName('header-tag');
 
-        let image = document.getElementById('demo-image');
-        image.src = "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png";
-        p_by_id.textContent = "new text!";
+        // let image = document.getElementById('demo-image');
+        // image.src = "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png";
+        // p_by_id.textContent = "new text!";
+
+        let querySelector = document.querySelector('.header-tag');
+        let querySelectorAll = document.querySelectorAll('.header-tag');
+
+        for (let index = 0; index < querySelectorAll.length; index++) {
+            querySelectorAll[index].textContent = "paragraph " + index;
+        }
+
+        document.getElementById('main-head').style.backgroundColor = 'red';
+        // document.getElementById('main-head').style.fontSize = '2rem';
+
+
+        // Creating Elements
+        let newParagraph = document.createElement('p');
+        newParagraph.textContent = "This is an element that was created using JS..";
+        document.getElementsByTagName('body')[0].appendChild(newParagraph);
+        console.log(newParagraph);
+
+        let htuList = document.getElementById('htu-list');
+        let navBarData = [
+            "Home", "About Us"
+        ];
+        for (let index = 0; index < navBarData.length; index++) {
+            let newLi = document.createElement('li');
+            newLi.innerHTML = "<a href='#'>" + navBarData[index] + "</a>";
+            htuList.appendChild(newLi);
+        }
+
+        // Removing elements
+        document.getElementsByTagName('img')[0].remove()
+
     </script>
 </body>
 
