@@ -3,6 +3,7 @@ const p2Points = document.getElementById("p2-points");
 const p1Btn = document.getElementById("p1-btn");
 const p2Btn = document.getElementById("p2-btn");
 const winnerContainer = document.getElementById("winner");
+// const appImage = document.getElementsByTagName('img')[0];
 let p1Score = 0;
 let p2Score = 0;
 const gameOver = 5;
@@ -76,9 +77,11 @@ function endGame() {
 
     if (colorSwitch == 0) {
       winnerContainer.style.backgroundColor = 'red';
+      // appImage.style.boxShadow = '0px 0px 41px 10px rgba(209,224,23,0.75)';
       colorSwitch++;
     } else {
       winnerContainer.style.backgroundColor = 'yellow';
+      // appImage.style.boxShadow = 'none';
       colorSwitch--;
     }
   }, 500);
