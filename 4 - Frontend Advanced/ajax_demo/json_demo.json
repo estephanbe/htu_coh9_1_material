@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Bisharah",
+        "age": 30,
+        "classes": [
+            "php",
+            "python",
+            "dart"
+        ],
+        "settings": {
+            "font-size": "2rem",
+            "color": "blue"
+        }
+    },
+    {
+        "name": "Bisharah",
+        "age": 30,
+        "classes": [
+            "php",
+            "python",
+            "dart"
+        ],
+        "settings": {
+            "font-size": "2rem",
+            "color": "blue"
+        }
+    },
+    {
+        "name": "Bisharah",
+        "age": 30,
+        "classes": [
+            "php",
+            "python",
+            "dart"
+        ],
+        "settings": {
+            "font-size": "2rem",
+            "color": "blue"
+        }
+    }
+]
