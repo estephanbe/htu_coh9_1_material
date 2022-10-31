@@ -16,3 +16,11 @@ hideBox.addEventListener("click", function (event) {
   event.target.style.backgroundColor = "green";
   document.getElementById("box").style.display = "none";
 });
+
+const menu = document.getElementById('mobile-menu');
+document.getElementById('open-menu').addEventListener('click', function () {
+  menu.style.width = '500px';
+});
+document.getElementById('close-menu').addEventListener('click', function () {
+  menu.style.width = '0';
+});

@@ -19,6 +19,16 @@
             padding: 1rem;
             margin-bottom: 3rem;
         }
+
+        #mobile-menu {
+            width: 0;
+            height: 100vh;
+            background-color: rgb(109, 109, 131);
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: width 3s;
+        }
     </style>
 </head>
 
@@ -38,7 +48,10 @@
     <div id="box"></div>
 
 
-
+    <button id="open-menu">Open Menu</button>
+    <div id="mobile-menu">
+        <button id="close-menu">Close Menu</button>
+    </div>
 
     <script src="events.js"></script>
 </body>

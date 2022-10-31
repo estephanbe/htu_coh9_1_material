@@ -1,7 +1,8 @@
-let p1Points = document.getElementById("p1-points");
-let p2Points = document.getElementById("p2-points");
-let p1Btn = document.getElementById("p1-btn");
-let p2Btn = document.getElementById("p2-btn");
+const p1Points = document.getElementById("p1-points");
+const p2Points = document.getElementById("p2-points");
+const p1Btn = document.getElementById("p1-btn");
+const p2Btn = document.getElementById("p2-btn");
+const winnerContainer = document.getElementById("winner");
 let p1Score = 0;
 let p2Score = 0;
 const gameOver = 5;
@@ -38,13 +39,21 @@ function addPoint(player) {
   if (player == 1) {
     // add 1 point to the score
     p1Score++;
+    if (p2Score > 0) {
+      p2Score--;
+    }
     // print the score on the player points section
     p1Points.textContent = p1Score;
+    p2Points.textContent = p2Score;
   } else {
     // add 1 point to the score
     p2Score++;
+    if (p1Score > 0) {
+      p1Score--;
+    }
     // print the score on the player points section
     p2Points.textContent = p2Score;
+    p1Points.textContent = p1Score;
   }
 }
 
@@ -57,10 +66,24 @@ function endGame() {
     winnerPlayerName = document.getElementById("p2-name").textContent;
   }
   document.getElementById("winner-name").textContent = winnerPlayerName;
-  document.getElementById("winner").style.display = "block";
+  winnerContainer.style.display = "block";
   document.getElementsByTagName("body")[0].style.backgroundColor = "green";
   p1Btn.disabled = true;
   p2Btn.disabled = true;
+
+  let colorSwitch = 0;
+  setInterval(function () {
+
+    if (colorSwitch == 0) {
+      winnerContainer.style.backgroundColor = 'red';
+      colorSwitch++;
+    } else {
+      winnerContainer.style.backgroundColor = 'yellow';
+      colorSwitch--;
+    }
+  }, 500);
+
+
 }
 
 // Bonus Assignment
