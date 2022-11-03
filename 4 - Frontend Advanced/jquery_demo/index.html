@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Demo</title>
+
+    <style>
+        .red-bg {
+            background-color: red;
+        }
+
+        .blue-bg {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">jQuery</h1>
+
+    <button id="red">Make title Red</button>
+    <button id="green">Make title Green</button>
+    <div>
+        <input type="text" id="htuInput">
+        <button id="alertInputValue">Alert</button>
+    </div>
+
+    <div>
+        <button id="changeBg">Change Background</button>
+        <button id="removeBg">Remove Background</button>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+
+    <script>
+        // Vanailla JS way
+        // const title = document.getElementById('title');
+        // title.textContent = 'demo'
+
+        // using jQuery
+        // $('#title').text('demo');
+
+        $('#red').click(function () {
+            $('#title').css('color', 'red');
+        });
+        $('#green').click(function () {
+            $('#title').css('color', 'green');
+        });
+        // $('#green').on('click', function () {
+        //     $('#title').css('color', 'red');
+        // });
+        // $('#red').attr('disabled', true);
+
+        $('#alertInputValue').click(function () {
+            alert($('#htuInput').val());
+        });
+
+        $('#changeBg').click(function () {
+            $('body').addClass('red-bg');
+        });
+
+        $('#removeBg').click(function () {
+            $('body').removeClass('red-bg');
+        });
+
+    </script>
+
+</body>
+
+</html>
