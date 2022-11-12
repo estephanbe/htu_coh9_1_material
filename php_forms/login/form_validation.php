@@ -23,17 +23,6 @@ $db_pasword = '1234567';
 
 
 if (!empty($username) && !empty($password)) {
-    // check username
-    if (strlen($username) > 5 && strlen($username) < 10) {
-        // proceed and check if the username is correct
-        if ($username != $db_username) {
-            $error_msg = "Incorrect username or password";
-            $error = true;
-        }
-    } else {
-        $error_msg = "Username should be between 5 and 10 Chars";
-        $error = true;
-    }
 
     // check username
     if (strlen($username) > 5 && strlen($username) < 10) {
