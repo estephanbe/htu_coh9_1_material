@@ -1,0 +1,17 @@
+[
+    {
+        "display_name": "Testing Admin",
+        "email": "admin@test.com",
+        "password": "123"
+    },
+    {
+        "display_name": "Testing Editor",
+        "email": "editor@test.com",
+        "password": "123"
+    },
+    {
+        "display_name": "Testing User",
+        "email": "user@test.com",
+        "password": "123"
+    }
+]

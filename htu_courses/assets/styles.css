@@ -1,0 +1,15 @@
+#htu-hero {
+    background-color: rgba(240, 240, 240, .9);
+    -webkit-box-shadow: 0px 0px 21px 10px rgba(46, 46, 46, 0.97);
+    box-shadow: 0px 0px 21px 10px rgba(46, 46, 46, 0.97);
+    border-radius: 15px;
+}
+
+footer {
+    background-color: #222;
+    height: 3.5rem;
+}
+
+footer * {
+    color: #f8f8f8;
+}

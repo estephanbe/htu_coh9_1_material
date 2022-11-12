@@ -1,16 +1,5 @@
 <?php
-$lessons = array( // this is indexed array
-    array( // this is associative array
-        "title" => "PHP Demo",
-        'description' => 'Demo about the basics of the PHP language and its sytax',
-        'link' => './demo/'
-    ),
-    array(
-        "title" => "PHP Forms",
-        'description' => 'How to handle forms in PHP.',
-        'link' => './php_forms/'
-    )
-);
+require_once './constants.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,7 +18,7 @@ $lessons = array( // this is indexed array
 
     <div class="row">
 
-        <?php foreach ($lessons as $lesson) : ?>
+        <?php foreach (LESSONS as $lesson) : ?>
 
             <div class="card-wrapper col-3 mb-5">
                 <div class="card" style="width: 100%;">
