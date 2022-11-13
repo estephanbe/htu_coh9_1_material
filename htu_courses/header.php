@@ -1,5 +1,6 @@
 <?php
 session_start();
+include './functions.php';
 include './includes/env.php';
 
 // first solution
@@ -8,7 +9,7 @@ include './includes/env.php';
 // if ($current_file_name !== 'index.php'){}
 
 if (!isset($_SESSION['user']) && !strpos($_SERVER['SCRIPT_FILENAME'], 'index.php'))
-    header("Location: ./");
+    htu_redirect('./');
 
 ?>
 <!doctype html>
@@ -27,7 +28,7 @@ if (!isset($_SESSION['user']) && !strpos($_SERVER['SCRIPT_FILENAME'], 'index.php
     <?php if (isset($_SESSION['user'])) :  ?>
         <style>
             header {
-                height: 70vh;
+                height: <?= strpos($_SERVER['SCRIPT_FILENAME'], 'home.php') ? 70 : 40 ?>vh;
                 background-image: url("./assets/images/home_bg.jpeg");
                 background-position: center;
                 background-size: cover;
@@ -57,7 +58,7 @@ if (!isset($_SESSION['user']) && !strpos($_SERVER['SCRIPT_FILENAME'], 'index.php
     <header>
         <nav class="navbar navbar-expand-lg bg-light px-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./"><?= TITLE ?></a>
+                <a class="navbar-brand" href="./home.php"><?= TITLE ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -88,7 +89,7 @@ if (!isset($_SESSION['user']) && !strpos($_SERVER['SCRIPT_FILENAME'], 'index.php
                 <div id="htu-hero" class="w-25 h-50 d-flex flex-column justify-content-center align-items-center">
                     <p id="htu-slogan"><?= SLOGAN ?></p>
                     <h1 id="htu-hp-title"><?= TITLE ?></h1>
-                    <form class="d-flex w-75" role="search">
+                    <form class="d-flex w-75" role="search" method="GET" action="./search.php">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="s">
                         <button class="btn btn-outline-success" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>

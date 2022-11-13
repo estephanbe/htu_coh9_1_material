@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../functions.php";
 
 $_SESSION['error'] = null;
 
@@ -47,10 +48,10 @@ if (!empty($email) && !empty($password)) {
 
 if ($error) {
     $_SESSION['error'] = $error_msg;
-    header('Location: ../');
+    htu_redirect("../");
 } else {
     $_SESSION['user'] = array(
         'display_name' => $valid_user->display_name
     );
-    header('Location: ../home.php');
+    htu_redirect("../home.php");
 }

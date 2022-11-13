@@ -1,19 +1,15 @@
 <?php
-require './header.php';
-
+include "./header.php";
 $courses = json_decode(file_get_contents('./api_data/courses.json'));
 
-
 ?>
+
 <main class="container my-5">
-    <h1 class="text-center">Featured Courses</h1>
+    <h1 class="text-center">All Courses</h1>
     <hr class="w-100 mb-5">
     <div class="row">
 
-        <?php foreach ($courses as $course) :
-            if (!$course->featured)
-                continue;
-        ?>
+        <?php foreach ($courses as $course) : ?>
 
             <div class="htu-card-wrapper mb-5 col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card w-100">
@@ -34,4 +30,6 @@ $courses = json_decode(file_get_contents('./api_data/courses.json'));
 
     </div>
 </main>
-<?php require './footer.php' ?>
+
+<?php
+include "./footer.php" ?>
