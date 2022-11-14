@@ -1,0 +1,14 @@
+[
+    {
+        "display_name": "Testing Admin",
+        "email": "admin@test.com",
+        "password": "123",
+        "is_admin": true
+    },
+    {
+        "display_name": "Testing User",
+        "email": "user@test.com",
+        "password": "123",
+        "is_admin": false
+    }
+]

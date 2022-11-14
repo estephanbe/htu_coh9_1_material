@@ -14,5 +14,10 @@ define("LESSONS", array( // this is indexed array
         "title" => "HTU Courses",
         'description' => 'Same website for HTU Courses but with backend support.',
         'link' => './htu_courses/'
+    ),
+    array(
+        "title" => "Animals API - PHP",
+        'description' => 'Collect information from the animals API and use it in a website.',
+        'link' => './animals_api_php/'
     )
 ));
