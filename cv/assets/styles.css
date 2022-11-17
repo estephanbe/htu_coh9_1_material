@@ -1,0 +1,14 @@
+form>div {
+    border: 2px solid rgb(128, 231, 128);
+    border-radius: 20px;
+    padding: 2rem;
+    display: none;
+    width: 0;
+    opacity: 0;
+}
+
+.cv-info-1 {
+    display: block;
+    width: 100%;
+    opacity: 1;
+}

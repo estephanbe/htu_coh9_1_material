@@ -19,5 +19,10 @@ define("LESSONS", array( // this is indexed array
         "title" => "Animals API - PHP",
         'description' => 'Collect information from the animals API and use it in a website.',
         'link' => './animals_api_php/'
+    ),
+    array(
+        "title" => "CV",
+        'description' => 'Create CV application.',
+        'link' => './cv/'
     )
 ));

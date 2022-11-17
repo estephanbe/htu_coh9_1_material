@@ -4,7 +4,7 @@ include "../includes/functions.php";
 
 $_SESSION['error'] = null;
 
-if ($_SERVER['REQUEST_METHOD'] != "POST" && empty($_POST)) // check if the form was submitted using POST method and is not empty
+if ($_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) // check if the form was submitted using POST method and is not empty
     die("You are a bad guy and you are trying to access this code directly!");
 
 $email = isset($_POST['email']) ? $_POST['email'] : null;
