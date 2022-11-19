@@ -24,5 +24,10 @@ define("LESSONS", array( // this is indexed array
         "title" => "CV",
         'description' => 'Create CV application.',
         'link' => './cv/'
+    ),
+    array(
+        "title" => "MySQL - Customers",
+        'description' => 'Simple CRM',
+        'link' => './crm/'
     )
 ));
