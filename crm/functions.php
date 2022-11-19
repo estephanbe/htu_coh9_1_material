@@ -45,3 +45,28 @@ function get_customer($id)
 
     return mysqli_fetch_assoc($result);
 }
+
+function create_customer($firstname, $lastname, $email, $phone, $sales)
+{
+    $connection = connect();
+    $sales = !empty($sales) ? (int) $sales : 0;
+    $sql = "INSERT INTO Customers (firstname, lastname, email, phone, sales) VALUES ('$firstname', '$lastname', '$email', '$phone', $sales)";
+    $result = mysqli_query($connection, $sql);
+    $id = $connection->insert_id;
+    return $id;
+}
+
+function update_customer($firstname, $lastname, $email, $phone, $sales, $id)
+{
+    $sales = !empty($sales) ? (int) $sales : 0;
+    $sql = <<<EOD
+    UPDATE Customers
+        SET firstname='$firstname',
+            lastname='$lastname',
+            email='$email',
+            phone='$phone',
+            sales=$sales
+        WHERE id=$id;
+    EOD;
+    $result = mysqli_query(connect(), $sql);
+}
