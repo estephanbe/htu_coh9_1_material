@@ -1,0 +1,60 @@
+[
+    {
+        "id": 2,
+        "fname": "Moana",
+        "lname": "Potts",
+        "dob": "Omnis aliquid volupt",
+        "phone": "+1 (824) 706-8332",
+        "email": "wowiruny@mailinator.com",
+        "address": "Aut quod consequuntu",
+        "objective": "Facere aut cumque mo asdfasd\r\nfasd fasd\r\n f\r\nsadf\r\n as\r\ns\r\n\r\n\r\nasdfasdfasdfasdfsdf",
+        "institute": [
+            "Ea eos eius do iure",
+            "Culpa blanditiis rep"
+        ],
+        "gdate": [
+            "1972-10-25",
+            "2022-07-06"
+        ],
+        "company": [
+            "Colon Bonner Traders",
+            "Mack Bryan Inc",
+            "Evans and Holloway Traders"
+        ],
+        "sdate": [
+            "2018-01-18",
+            "2013-05-09",
+            "2001-10-16"
+        ],
+        "photo": "cv-.jpeg"
+    },
+    {
+        "id": 3,
+        "fname": "Moana",
+        "lname": "Potts",
+        "dob": "Omnis aliquid volupt",
+        "phone": "+1 (824) 706-8332",
+        "email": "wowiruny@mailinator.com",
+        "address": "Aut quod consequuntu",
+        "objective": "Facere aut cumque mo asdfasd\r\nfasd fasd\r\n f\r\nsadf\r\n as\r\ns\r\n\r\n\r\nasdfasdfasdfasdfsdf",
+        "institute": [
+            "Ea eos eius do iure",
+            "Culpa blanditiis rep"
+        ],
+        "gdate": [
+            "1972-10-25",
+            "2022-07-06"
+        ],
+        "company": [
+            "Colon Bonner Traders",
+            "Mack Bryan Inc",
+            "Evans and Holloway Traders"
+        ],
+        "sdate": [
+            "2018-01-18",
+            "2013-05-09",
+            "2001-10-16"
+        ],
+        "photo": "cv-3.jpeg"
+    }
+]
