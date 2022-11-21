@@ -36,8 +36,9 @@ if ($error) {
     ts_redirect("../user_registration.php");
 } else {
     $_SESSION['user'] = array(
-        'display_name' => $new_user->display_name,
-        'is_admin' => $new_user->is_admin
+        'display_name' => $user->display_name,
+        'is_admin' => $user->is_admin,
+        'user_id' => $user->id
     );
     ts_redirect("../home.php");
 }

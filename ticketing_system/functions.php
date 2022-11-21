@@ -87,12 +87,13 @@ function get_seat($id)
     return mysqli_fetch_object($result);
 }
 
-function update_seat_reservation($id, $status)
+function update_seat_reservation($id, $status, $user_id)
 {
+    $user_id = !empty($user_id) ? $user_id : "NULL";
     $connection = connect();
     $sql = <<<EOD
     UPDATE seats
-        SET is_available=$status
+        SET is_available=$status, user_id=$user_id
         WHERE id=$id
     EOD;
     $result = mysqli_query($connection, $sql);
