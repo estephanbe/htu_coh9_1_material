@@ -39,5 +39,10 @@ define("LESSONS", array( // this is indexed array
         "title" => "OOP Basics",
         'description' => 'Demonstration of OOP concepts',
         'link' => './oop_basics/'
+    ),
+    array(
+        "title" => "Students Management System",
+        'description' => 'A simple students management system using OOP',
+        'link' => './sm_oop/'
     )
 ));
