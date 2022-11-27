@@ -61,6 +61,8 @@ class Items
                     while ($row = $result->fetch_object()) {
                         $items[] = $row;
                     }
+                } else {
+                    $this->http_code = 404;
                 }
 
                 $this->response_schema['body'] = $items;
@@ -91,7 +93,7 @@ class Items
 
         try {
             if (!isset($this->request_body->name)) {
-                $this->http_code = 406;
+                $this->http_code = 422;
                 throw new \Exception('name_param_not_found');
             }
             if (!$this->db->submit_query("INSERT INTO items (name) VALUES ('{$this->request_body->name}')")) {
@@ -116,7 +118,7 @@ class Items
 
         try {
             if (!isset($this->request_body->id)) {
-                $this->http_code = 406;
+                $this->http_code = 422;
                 throw new \Exception('id_param_not_found');
             }
 
@@ -151,7 +153,7 @@ class Items
     {
         try {
             if (!isset($this->request_body->id)) {
-                $this->http_code = 406;
+                $this->http_code = 422;
                 throw new \Exception('id_param_not_found');
             }
 

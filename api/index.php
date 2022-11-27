@@ -37,7 +37,6 @@ spl_autoload_register(function ($class_name) {
 
 // Routes to perform CRUD operations
 // Get all items
-Router::get('/', 'items');
 Router::get('/items', 'items.index');
 Router::get('/items/single', 'items.single');
 // Create item
