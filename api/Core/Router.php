@@ -42,7 +42,7 @@ class Router
 
         if (empty($routes) || !array_key_exists($request, $routes)) {
             http_response_code(404);
-            die("Page is not existed");
+            die("Page does not exists!");
         }
 
         $controller_namespace = 'Core\\Controller\\';
@@ -55,6 +55,8 @@ class Router
         if (count($class_arr) == 2) {
             call_user_func([$instence, $class_arr[1]]);
         }
+
+        $instence->render();
     }
 
     public static function get($route, $controller): void
