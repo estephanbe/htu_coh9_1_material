@@ -52,7 +52,7 @@ class Items
     {
         $items = array();
         try {
-            $result = $this->db->submit_query("SELECT * FROM itemss");
+            $result = $this->db->submit_query("SELECT * FROM items");
             if (!$result) {
                 $this->http_code = 500;
                 throw new \Exception("sql_response_error");
