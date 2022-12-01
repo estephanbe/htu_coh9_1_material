@@ -1,169 +1,143 @@
 $(function () {
-    const baseURL = "http://coh91-api.local";
-    const itemInput = $('#item-input');
+    const taskInput = $('#item-input');
     const add = $('#add');
-    const itemsContainer = $('#items-container');
+    const taskContainer = $('#items-container');
+    const baseUrl = "http://coh91-api.local";
 
-    // on loading the app
+
     $.ajax({
-        url: baseURL + "/items",
         type: "GET",
-        success: function (data) {
-            data.body.forEach(element => {
-                console.log(element.completed);
-                itemsContainer.append(`
-                <div data-id="${element.id}" class="item w-25 justify-content-between align-items-center mb-3 p-1 border-bottom ${element.completed == 1 ? "completed" : "" }">
-                    <input class="form-check-input" type="checkbox" ${element.completed == 1 ? "checked" : "" }>
-                    <p class="m-0">${element.name}</p>
-                    <button class="btn btn-danger">
+        url: baseUrl + "/items",
+        success: function (response) {
+            response.body.forEach(item => {
+                taskContainer.append(`
+                <div data-id="${item.id}" class="task w-25 m-auto d-flex justify-content-between align-items-between mb-4 border-bottom p-2 ${ item.completed == 1 ? "completed" : "" }">
+                    <input type="checkbox" ${ item.completed == 1 ? "checked" : "" }>
+                    <p class="m-0 d-flex align-items-center">${item.name}</p>
+                    <button class="btn btn-danger" type="button">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
                 `);
 
-                $(`div[data-id="${element.id}"] input`).change(function (e) {
+                $(`div[data-id="${item.id}"] input`).change(function () {
                     $(this).parent().toggleClass('completed');
                     $.ajax({
                         type: "PUT",
-                        url: baseURL + "/items/update",
+                        url: baseUrl + "/items/update",
                         data: JSON.stringify({
-                            id: element.id
+                            id: item.id
                         }),
                         dataType: "application/json",
                         success: function (response) {
-                            console.log(response)
-                        },
-                        error: function (e) {
-                            console.log(e)
+
                         }
                     });
                 });
 
-                $(`div[data-id="${element.id}"] button`).click(function (e) {
+                $(`div[data-id="${item.id}"] button`).click(function () {
                     $.ajax({
                         type: "DELETE",
-                        url: baseURL + "/items/delete",
+                        url: baseUrl + "/items/delete",
                         data: JSON.stringify({
-                            id: element.id
+                            id: item.id
                         }),
                         dataType: "application/json",
                         success: function (response) {
-                            console.log(response)
-                        },
-                        error: function (e) {
-                            console.log(e)
+
                         }
                     });
                     $(this).parent().hide('slow', function () {
                         $(this).remove();
                     });
-
                 });
             });
-
         }
     });
 
-    // to automatically focus on the input without the user action to click on the input to start typing
-    itemInput.focus();
 
-    let counter = 1;
+
+    taskInput.focus();
 
     add.click(function () {
-        const itemContent = itemInput.val();
+        let task = taskInput.val();
 
-        if (itemContent == "") {
-            alert("You need to add item");
+        if (task == "") {
+            alert('You need to enter a task to proceed!');
             return;
         }
 
         // check if the item is already existed in the app. 
         // Get all items
-        let items = $('.item p');
-        let additionSwitch = false;
+        let tasks = $('.task p');
         // loop through all items
-        items.each(function (i) {
+        let taskSwitch = false;
+        tasks.each(function () {
             // check if the current item in the loop equals the new item.
-            if ($(this).text() == itemContent) {
-                alert('This item is already exists.');
-                additionSwitch = true;
+            if ($(this).text() == task) {
+                alert("Task already exists!");
+                taskSwitch = true;
             }
         });
 
-        if (additionSwitch) {
+        if (taskSwitch) {
             return;
         }
 
         $.ajax({
             type: "POST",
-            url: baseURL + "/items/create",
+            url: baseUrl + "/items/create",
             data: JSON.stringify({
-                name: itemContent
+                name: task
             }),
-            dataType: "application/json",
             success: function (response) {
-                console.log('done')
-                itemsContainer.append(`
-                <div data-id="${response.id}" class="item w-25 justify-content-between align-items-center mb-3 p-1 border-bottom">
-                    <input class="form-check-input" type="checkbox">
-                    <p class="m-0">${response.name}</p>
-                    <button class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
-                `);
+                console.log(response);
+                response.body.forEach(item => {
+                    taskContainer.append(`
+                    <div data-id="${item.id}" class="task w-25 m-auto d-flex justify-content-between align-items-between mb-4 border-bottom p-2 ${ item.completed == 1 ? "completed" : "" }">
+                        <input type="checkbox" ${ item.completed == 1 ? "checked" : "" }>
+                        <p class="m-0 d-flex align-items-center">${item.name}</p>
+                        <button class="btn btn-danger" type="button">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                    `);
 
-                $(`div[data-id="${response.id}"] input`).change(function (e) {
-                    $(this).parent().toggleClass('completed');
-                    $.ajax({
-                        type: "PUT",
-                        url: baseURL + "/items/update",
-                        data: JSON.stringify({
-                            id: response.id
-                        }),
-                        dataType: "application/json",
-                        success: function (response) {
-                            console.log(response)
-                        },
-                        error: function (e) {
-                            console.log(e)
-                        }
+                    $(`div[data-id="${item.id}"] input`).change(function () {
+                        $(this).parent().toggleClass('completed');
+                        $.ajax({
+                            type: "PUT",
+                            url: baseUrl + "/items/update",
+                            data: JSON.stringify({
+                                id: item.id
+                            }),
+                            dataType: "application/json",
+                            success: function (response) {
+
+                            }
+                        });
+                    });
+
+                    $(`div[data-id="${item.id}"] button`).click(function () {
+                        $.ajax({
+                            type: "DELETE",
+                            url: baseUrl + "/items/delete",
+                            data: JSON.stringify({
+                                id: item.id
+                            }),
+                            dataType: "application/json",
+                            success: function (response) {
+
+                            }
+                        });
+                        $(this).parent().hide('slow', function () {
+                            $(this).remove();
+                        });
                     });
                 });
-
-                $(`div[data-id="${response.id}"] button`).click(function (e) {
-                    $(this).parent().hide('slow', function () {
-                        $(this).remove();
-                    });
-                    $.ajax({
-                        type: "DELETE",
-                        url: baseURL + "/items/delete",
-                        data: JSON.stringify({
-                            id: element.id
-                        }),
-                        dataType: "application/json",
-                        success: function (response) {
-                            console.log(response)
-                        },
-                        error: function (e) {
-                            console.log(e)
-                        }
-                    });
-                });
-
-                itemInput.val('');
-                itemInput.focus();
-            },
-            error: function (e) {
-                console.log(e);
+                taskInput.val('');
+                taskInput.focus();
             }
         });
-
-
-
-
     });
-
-
-
 });
