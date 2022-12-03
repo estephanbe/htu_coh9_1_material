@@ -8,7 +8,13 @@ spl_autoload_register(function ($class_name) {
     require_once $file_path;
 });
 
-Router::get('/', "front.index");
+Router::get('/', 'front.index'); // Display home.php
 
+Router::get('/posts', "posts.index"); // list of posts (HTML)
+Router::get('/posts/create', "posts.create"); // Display the creation form (HTML)
+Router::post('/posts/store', "posts.store"); // Creates the posts (PHP)
+Router::get('/posts/edit', "posts.edit"); // Display the edit form (HTML)
+Router::post('/posts/update', "posts.update"); // Updates the posts (PHP)
+Router::get('/posts/delete', "posts.delete"); // Delete the post (PHP)
 
 Router::redirect();

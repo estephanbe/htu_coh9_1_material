@@ -7,9 +7,10 @@ namespace Core\Base;
  */
 class View
 {
-    public function __construct($view)
+    public function __construct($view, $data)
     {
-        // $view = home
+        $view = \str_replace('.', '/', $view);
+        $posts = $data;
         include_once \dirname(__DIR__, 2) . "/resources/views/$view.php";
     }
 }

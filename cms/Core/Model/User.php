@@ -4,6 +4,6 @@ namespace Core\Model;
 
 use Core\Base\Model;
 
-class Post extends Model
+class User extends Model
 {
 }
