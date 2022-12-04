@@ -9,13 +9,10 @@ use Core\Model\Post;
 class Posts extends Controller
 {
 
-    private $view = null;
-    private $data;
-
     public function render()
     {
         if (!empty($this->view))
-            new View($this->view, $this->data);
+            $this->view();
     }
 
     /**
@@ -27,7 +24,15 @@ class Posts extends Controller
     {
         $this->view = 'posts.index';
         $post = new Post; // new model post.
-        $this->data = $post->get_all();
+        $this->data['posts'] = $post->get_all();
+        $this->data['posts_count'] = count($post->get_all());
+    }
+
+    public function single()
+    {
+        $this->view = 'posts.single';
+        $post = new Post();
+        $this->data['post'] = $post->get_by_id($_GET['id']);
     }
 
     /**
@@ -47,6 +52,9 @@ class Posts extends Controller
      */
     public function store()
     {
+        $post = new Post();
+        $post->create($_POST);
+        $this->redirect('/posts');
     }
 
     /**
@@ -57,6 +65,8 @@ class Posts extends Controller
     public function edit()
     {
         $this->view = 'posts.edit';
+        $post = new Post();
+        $this->data['post'] = $post->get_by_id($_GET['id']);
     }
 
     /**
@@ -66,6 +76,9 @@ class Posts extends Controller
      */
     public function update()
     {
+        $post = new Post();
+        $post->update($_POST);
+        $this->redirect('/post?id=' . $_POST['id']);
     }
 
     /**
@@ -75,5 +88,8 @@ class Posts extends Controller
      */
     public function delete()
     {
+        $post = new Post();
+        $post->delete($_GET['id']);
+        $this->redirect('/posts');
     }
 }

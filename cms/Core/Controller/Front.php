@@ -3,7 +3,6 @@
 namespace Core\Controller;
 
 use Core\Base\Controller;
-use Core\Base\View;
 use Core\Model\Post;
 
 
@@ -11,14 +10,26 @@ class Front extends Controller
 {
     public function render()
     {
-        $view = new View('home');
+        if (!empty($this->view))
+            $this->view();
     }
 
+    /**
+     * List all news
+     *
+     * @return void
+     */
     public function index()
     {
-        // Create an instance of Post model. 
+        $this->view = 'home';
         $post = new Post();
-        // Get data brom the posts table.
-        // pass the data to the render method
+        $this->data['posts'] = $post->get_all();
+    }
+
+    public function single()
+    {
+        $this->view = 'single';
+        $post = new Post();
+        $this->data['post'] = $post->get_by_id($_GET['id']);
     }
 }

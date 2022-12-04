@@ -43,8 +43,52 @@ class Model
         return $result;
     }
 
-    public function create()
+    public function create($data)
     {
+        // Get dynamic keys title, contenta
+        // $keys: string
+        // Get dynamic values coresponds to the key '$data->title','$data->content'
+        // $values: string
+
+        $keys = '';
+        $values = '';
+
+        foreach ($data as $key => $value) {
+
+            if ($key != \array_key_last($data)) {
+                $keys .= $key . ', ';
+                $values .= "'$value', ";
+            } else {
+                $keys .= $key;
+                $values .= "'$value'";
+            }
+        }
+        $sql = "INSERT INTO $this->table ($keys) VALUES ($values)";
+        $this->connection->query($sql);
+    }
+
+    public function update($data)
+    {
+        $set_values = '';
+        $id = 0;
+
+        foreach ($data as $key => $value) {
+            if ($key == 'id') {
+                $id = $value;
+                continue;
+            }
+            if ($key != \array_key_last($data)) {
+                $set_values .= "$key='$value', ";
+            } else {
+                $set_values .= "$key='$value'";
+            }
+        }
+        // $sql = "INSERT INTO $this->table ($keys) VALUES ($values)";
+        $sql = "UPDATE $this->table 
+            SET $set_values
+            WHERE id=$id
+        ";
+        $this->connection->query($sql);
     }
 
     protected function connection()

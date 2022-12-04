@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1 class="text-center">Welome to Our News Agency</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Agency</title>
-</head>
 
-<body>
+<div class="row my-5">
 
-    <h1>Welome to our new agency</h1>
+    <?php foreach ($data->posts as $post) : ?>
+        <div class="htu-card-wrapper mb-5 col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <?= $post->title ?>
+                    </h5>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="./front/post?id=<?= $post->id ?>" class="btn btn-primary">Check News</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
 
-</body>
-
-</html>
+</div>

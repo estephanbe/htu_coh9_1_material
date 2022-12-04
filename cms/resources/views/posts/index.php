@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+    <h1 class="d-flex justify-content-around">Posts List (<?= $data->posts_count ?>)</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Agency</title>
-</head>
+    <div class="row my-5">
 
-<body>
+        <?php foreach ($data->posts as $post) : ?>
+            <div class="htu-card-wrapper mb-5 col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <?= $post->title ?>
+                        </h5>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="./post?id=<?= $post->id ?>" class="btn btn-primary">Check News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
 
-    <h1 class="d-flex justify-content-around">Posts List</h1>
-
-    <?php foreach ($posts as $post) : ?>
-        <div>
-            <h2><?= $post->title ?></h2>
-            <p><?= $post->content ?></p>
-        </div>
-    <?php endforeach; ?>
-
-</body>
-
-</html>
+    </div>
