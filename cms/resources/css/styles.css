@@ -1,8 +1,50 @@
+body {
+    height: 100vh;
+}
+
 footer {
     background-color: #222;
     height: 3.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
 }
 
 footer * {
     color: #f8f8f8;
+}
+
+.admin-view #admin-area {
+    min-height: 100vh;
+}
+
+.admin-view .admin-links {
+    background-color: #212529;
+}
+
+.admin-view .admin-links * {
+    background-color: #212529;
+}
+
+.admin-view .admin-links li {
+    color: #fff;
+    border-color: #fff;
+}
+
+.admin-view .admin-links .list-group-item {
+    border-bottom: 1px solid #fff;
+}
+
+
+.admin-view .admin-links li a {
+    display: block;
+    color: #fff;
+    border-color: #fff;
+    text-decoration: #fff;
+    transition: opacity .5s;
+}
+
+.admin-view .admin-links li a:hover {
+    opacity: .7;
 }

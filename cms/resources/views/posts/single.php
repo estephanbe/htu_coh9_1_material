@@ -1,6 +1,15 @@
+<?php
+
+use Core\Helpers\Helper;
+?>
 <div class="mt-5 d-flex flex-row-reverse gap-3">
-    <a href="/posts/edit?id=<?= $data->post->id ?>" class="btn btn-warning">Edit</a>
-    <a href="/posts/delete?id=<?= $data->post->id ?>" class="btn btn-danger">Delete</a>
+    <?php if (Helper::check_permission(['post:read', 'post:update'])) : ?>
+        <a href="/posts/edit?id=<?= $data->post->id ?>" class="btn btn-warning">Edit</a>
+    <?php endif;
+    if (Helper::check_permission(['user:read', 'post:delete'])) :
+    ?>
+        <a href="/posts/delete?id=<?= $data->post->id ?>" class="btn btn-danger">Delete</a>
+    <?php endif; ?>
 </div>
 
 <div class="my-5">

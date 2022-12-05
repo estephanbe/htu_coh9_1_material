@@ -4,6 +4,7 @@ namespace Core\Controller;
 
 use Core\Base\Controller;
 use Core\Base\View;
+use Core\Helpers\Helper;
 use Core\Model\Post;
 
 class Posts extends Controller
@@ -15,6 +16,12 @@ class Posts extends Controller
             $this->view();
     }
 
+    function __construct()
+    {
+        $this->auth();
+        $this->admin_view(true);
+    }
+
     /**
      * Gets all posts
      *
@@ -22,6 +29,7 @@ class Posts extends Controller
      */
     public function index()
     {
+        $this->permissions(['post:read']);
         $this->view = 'posts.index';
         $post = new Post; // new model post.
         $this->data['posts'] = $post->get_all();
@@ -30,6 +38,7 @@ class Posts extends Controller
 
     public function single()
     {
+        $this->permissions(['post:read']);
         $this->view = 'posts.single';
         $post = new Post();
         $this->data['post'] = $post->get_by_id($_GET['id']);
@@ -42,6 +51,7 @@ class Posts extends Controller
      */
     public function create()
     {
+        $this->permissions(['post:create']);
         $this->view = 'posts.create';
     }
 
@@ -52,9 +62,10 @@ class Posts extends Controller
      */
     public function store()
     {
+        $this->permissions(['post:create']);
         $post = new Post();
         $post->create($_POST);
-        $this->redirect('/posts');
+        Helper::redirect('/posts');
     }
 
     /**
@@ -64,6 +75,7 @@ class Posts extends Controller
      */
     public function edit()
     {
+        $this->permissions(['post:read', 'post:update']);
         $this->view = 'posts.edit';
         $post = new Post();
         $this->data['post'] = $post->get_by_id($_GET['id']);
@@ -76,9 +88,10 @@ class Posts extends Controller
      */
     public function update()
     {
+        $this->permissions(['post:read', 'post:update']);
         $post = new Post();
         $post->update($_POST);
-        $this->redirect('/post?id=' . $_POST['id']);
+        Helper::redirect('/post?id=' . $_POST['id']);
     }
 
     /**
@@ -88,8 +101,9 @@ class Posts extends Controller
      */
     public function delete()
     {
+        $this->permissions(['post:read', 'post:delete']);
         $post = new Post();
         $post->delete($_GET['id']);
-        $this->redirect('/posts');
+        Helper::redirect('/posts');
     }
 }

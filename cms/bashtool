@@ -3,10 +3,10 @@
 
 // check if there is "make:controller" command
 if (in_array('make:controller', $argv)) {
-        // get the controller name
+        // 1 )get the controller name
         $controller = $argv[2];
 
-        // prepare the data inside the controller file
+        // 2) prepare the data inside the controller file
         $file_data = <<<EOD
         <?php
 
@@ -25,6 +25,6 @@ if (in_array('make:controller', $argv)) {
         }
         EOD;
 
-        // create the controller
+        // 3) create the controller
         file_put_contents("./Core/Controller/$controller.php", $file_data);
 }

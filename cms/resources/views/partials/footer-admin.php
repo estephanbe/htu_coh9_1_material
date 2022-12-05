@@ -1,4 +1,6 @@
 </div>
+</div>
+</div>
 
 <!-- <footer class="d-flex justify-content-center align-items-center">
     <p class="m-0">&copy; <?= date('Y') ?> - All rights reserved to HTU</p>

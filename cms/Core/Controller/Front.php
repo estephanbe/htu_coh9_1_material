@@ -14,6 +14,11 @@ class Front extends Controller
             $this->view();
     }
 
+    function __construct()
+    {
+        $this->admin_view(false);
+    }
+
     /**
      * List all news
      *

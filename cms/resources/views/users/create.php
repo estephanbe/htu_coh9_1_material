@@ -1,4 +1,4 @@
-<h1>Create Post</h1>
+<h1>Create User</h1>
 
 <form action="/users/store" method="POST" class="w-50">
     <div class="mb-3">

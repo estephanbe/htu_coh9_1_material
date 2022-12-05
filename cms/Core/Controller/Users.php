@@ -3,6 +3,7 @@
 namespace Core\Controller;
 
 use Core\Base\Controller;
+use Core\Helpers\Helper;
 use Core\Model\User;
 
 class Users extends Controller
@@ -13,6 +14,12 @@ class Users extends Controller
                         $this->view();
         }
 
+        function __construct()
+        {
+                $this->auth();
+                $this->admin_view(true);
+        }
+
         /**
          * Gets all users
          *
@@ -20,6 +27,7 @@ class Users extends Controller
          */
         public function index()
         {
+                $this->permissions(['user:read']);
                 $this->view = 'users.index';
                 $user = new User; // new model post.
                 $this->data['users'] = $user->get_all();
@@ -28,6 +36,7 @@ class Users extends Controller
 
         public function single()
         {
+                $this->permissions(['user:read']);
                 $this->view = 'users.single';
                 $user = new User();
                 $this->data['user'] = $user->get_by_id($_GET['id']);
@@ -40,6 +49,7 @@ class Users extends Controller
          */
         public function create()
         {
+                $this->permissions(['user:create']);
                 $this->view = 'users.create';
         }
 
@@ -50,9 +60,10 @@ class Users extends Controller
          */
         public function store()
         {
+                $this->permissions(['user:create']);
                 $user = new User();
                 $user->create($_POST);
-                $this->redirect('/users');
+                Helper::redirect('/users');
         }
 
         /**
@@ -62,6 +73,7 @@ class Users extends Controller
          */
         public function edit()
         {
+                $this->permissions(['user:read', 'user:update']);
                 $this->view = 'users.edit';
                 $user = new User();
                 $this->data['user'] = $user->get_by_id($_GET['id']);
@@ -74,9 +86,10 @@ class Users extends Controller
          */
         public function update()
         {
+                $this->permissions(['user:read', 'user:update']);
                 $user = new User();
                 $user->update($_POST);
-                $this->redirect('/user?id=' . $_POST['id']);
+                Helper::redirect('/user?id=' . $_POST['id']);
         }
 
         /**
@@ -86,8 +99,9 @@ class Users extends Controller
          */
         public function delete()
         {
+                $this->permissions(['user:read', 'user:delete']);
                 $user = new User();
                 $user->delete($_GET['id']);
-                $this->redirect('/users');
+                Helper::redirect('/users');
         }
 }

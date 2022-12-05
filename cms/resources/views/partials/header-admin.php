@@ -1,3 +1,6 @@
+<?php
+
+use Core\Helpers\Helper; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +14,9 @@
     <link rel="stylesheet" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/css/styles.css">
 </head>
 
-<body>
+<body class="admin-view">
 
-
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">News Agency</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +25,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="/logout">Logout</a>
                     </li>
-                    <?php if (isset($_SESSION['user'])) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
-                    <?php endif; ?>
                 </ul>
                 <!-- <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -39,4 +36,33 @@
         </div>
     </nav>
 
-    <div class="container my-5">
+    <div id="admin-area" class="row">
+        <div class="col-2 admin-links">
+            <ul class="list-group list-group-flush mt-3">
+                <?php if (Helper::check_permission(['post:read'])) : ?>
+                    <li class="list-group-item">
+                        <a href="/posts">All Posts</a>
+                    </li>
+                <?php endif;
+                if (Helper::check_permission(['post:create'])) :
+                ?>
+                    <li class="list-group-item">
+                        <a href="/posts/create">Create Post</a>
+                    </li>
+                <?php endif;
+                if (Helper::check_permission(['user:read'])) :
+                ?>
+                    <li class="list-group-item">
+                        <a href="/users">All Users</a>
+                    </li>
+                <?php endif;
+                if (Helper::check_permission(['user:create'])) :
+                ?>
+                    <li class="list-group-item">
+                        <a href="/users/create">Create User</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="col-10 admin-area-content">
+            <div class="container my-5">
