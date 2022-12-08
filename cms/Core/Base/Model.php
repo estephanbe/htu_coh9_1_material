@@ -4,7 +4,7 @@ namespace Core\Base;
 
 class Model
 {
-    protected $connection;
+    public $connection;
     protected $table;
 
     public function __construct()

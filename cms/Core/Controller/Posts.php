@@ -6,6 +6,7 @@ use Core\Base\Controller;
 use Core\Base\View;
 use Core\Helpers\Helper;
 use Core\Model\Post;
+use Core\Model\Tag;
 
 class Posts extends Controller
 {
@@ -64,6 +65,7 @@ class Posts extends Controller
     {
         $this->permissions(['post:create']);
         $post = new Post();
+        $_POST['user_id'] = $_SESSION['user']['user_id']; // this is the id of the current logged in user. Because the post creator would be the same logged in user.
         $post->create($_POST);
         Helper::redirect('/posts');
     }
@@ -78,7 +80,10 @@ class Posts extends Controller
         $this->permissions(['post:read', 'post:update']);
         $this->view = 'posts.edit';
         $post = new Post();
-        $this->data['post'] = $post->get_by_id($_GET['id']);
+        $tag = new Tag();
+        $selected_post = $post->get_by_id($_GET['id']);
+        $selected_post->tags = $tag->get_all();
+        $this->data['post'] = $selected_post;
     }
 
     /**
@@ -90,6 +95,18 @@ class Posts extends Controller
     {
         $this->permissions(['post:read', 'post:update']);
         $post = new Post();
+
+        // Handle posts_tags relations
+        $post_id = $_POST['id'];
+        $related_tags = $_POST['tags'] ?? null;
+        if (!empty($related_tags)) {
+            foreach ($related_tags as $tag_id) {
+                $sql = "INSERT INTO posts_tags (post_id, tag_id) VALUES ($post_id, $tag_id)";
+                $post->connection->query($sql);
+            }
+        }
+        unset($_POST['tags']);
+
         $post->update($_POST);
         Helper::redirect('/post?id=' . $_POST['id']);
     }

@@ -6,7 +6,7 @@ use Core\Helpers\Helper;
     <?php if (Helper::check_permission(['post:read', 'post:update'])) : ?>
         <a href="/posts/edit?id=<?= $data->post->id ?>" class="btn btn-warning">Edit</a>
     <?php endif;
-    if (Helper::check_permission(['user:read', 'post:delete'])) :
+    if (Helper::check_permission(['post:read', 'post:delete'])) :
     ?>
         <a href="/posts/delete?id=<?= $data->post->id ?>" class="btn btn-danger">Delete</a>
     <?php endif; ?>

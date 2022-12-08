@@ -41,6 +41,18 @@ Router::post('/posts/update', "posts.update"); // Updates the posts (PHP)
 // athenticated + permissions [post:read, post:detele]
 Router::get('/posts/delete', "posts.delete"); // Delete the post (PHP)
 
+// athenticated + permissions [post:read]
+Router::get('/tags', "tags.index"); // list of tags (HTML)
+Router::get('/tag', "tags.single"); // Displays single tag (HTML)
+// athenticated + permissions [tag:create]
+Router::get('/tags/create', "tags.create"); // Display the creation form (HTML)
+Router::post('/tags/store', "tags.store"); // Creates the tags (PHP)
+// athenticated + permissions [tag:read, tag:create]
+Router::get('/tags/edit', "tags.edit"); // Display the edit form (HTML)
+Router::post('/tags/update', "tags.update"); // Updates the tags (PHP)
+// athenticated + permissions [tag:read, tag:detele]
+Router::get('/tags/delete', "tags.delete"); // Delete the tag (PHP)
+
 // athenticated + permissions [user:read]
 Router::get('/users', "users.index"); // list of users (HTML)
 Router::get('/user', "users.single"); // Displays single post (HTML)

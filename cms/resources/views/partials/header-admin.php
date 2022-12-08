@@ -50,6 +50,17 @@ use Core\Helpers\Helper; ?>
                         <a href="/posts/create">Create Post</a>
                     </li>
                 <?php endif;
+                if (Helper::check_permission(['tag:read'])) : ?>
+                    <li class="list-group-item">
+                        <a href="/tags">All Tags</a>
+                    </li>
+                <?php endif;
+                if (Helper::check_permission(['tag:create'])) :
+                ?>
+                    <li class="list-group-item">
+                        <a href="/tags/create">Create Tag</a>
+                    </li>
+                <?php endif;
                 if (Helper::check_permission(['user:read'])) :
                 ?>
                     <li class="list-group-item">

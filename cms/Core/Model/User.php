@@ -9,11 +9,13 @@ class User extends Model
 
     const ADMIN = array(
         "post:read", "post:create", "post:update", "post:delete",
-        "user:read", "user:create", "user:update", "user:delete"
+        "user:read", "user:create", "user:update", "user:delete",
+        "tag:read", "tag:create", "tag:update", "tag:delete"
     );
 
     const EDITOR = array(
-        "post:read", "post:create", "post:update"
+        "post:read", "post:create", "post:update",
+        "tag:read", "tag:create", "tag:update"
     );
 
 
