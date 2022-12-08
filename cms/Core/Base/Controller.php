@@ -46,6 +46,12 @@ abstract class Controller
         // if any of the permission sets are not assigned to the user, redirect to the dashboard
     }
 
+    /**
+     * Change the header view. check View.php line 18
+     *
+     * @param boolean $switch
+     * @return void
+     */
     protected function admin_view(bool $switch): void
     {
         // check if the session user is existed

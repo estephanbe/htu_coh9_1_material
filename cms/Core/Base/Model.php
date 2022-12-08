@@ -83,7 +83,6 @@ class Model
                 $set_values .= "$key='$value'";
             }
         }
-        // $sql = "INSERT INTO $this->table ($keys) VALUES ($values)";
         $sql = "UPDATE $this->table 
             SET $set_values
             WHERE id=$id

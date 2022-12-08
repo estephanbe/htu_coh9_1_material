@@ -88,6 +88,20 @@ class Users extends Controller
         {
                 $this->permissions(['user:read', 'user:update']);
                 $user = new User();
+                // process role
+                $permissions = null;
+                switch ($_POST['role']) {
+                        case 'admin':
+                                $permissions = User::ADMIN;
+                                break;
+
+                        case 'editor':
+                                $permissions = User::EDITOR;
+                                break;
+                }
+                unset($_POST['role']);
+                // $_POST['permissions'] = implode(',', $permissions);
+                $_POST['permissions'] = \serialize($permissions);
                 $user->update($_POST);
                 Helper::redirect('/user?id=' . $_POST['id']);
         }

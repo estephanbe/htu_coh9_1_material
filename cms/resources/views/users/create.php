@@ -18,4 +18,5 @@
         <input type="password" class="form-control" id="password-email" name="password">
     </div>
     <button type="submit" class="btn btn-success mt-4">Create</button>
+    <a href="/users" class="btn btn-danger ms-3 mt-4">Cancel</a>
 </form>
