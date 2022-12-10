@@ -33,13 +33,23 @@ class Model
 
     public function get_by_id($id)
     {
-        $result = $this->connection->query("SELECT * FROM $this->table WHERE id=$id");
+        $stmt = $this->connection->prepare("SELECT * FROM $this->table WHERE id=?"); // prepare the sql statement
+        $stmt->bind_param('i', $id); // bind the params per data type (https://www.php.net/manual/en/mysqli-stmt.bind-param.php)
+        $stmt->execute(); // execute the statement on the DB
+        $result = $stmt->get_result(); // get the result of the execution
+        $stmt->close();
+        // $result = $this->connection->query("SELECT * FROM $this->table WHERE id=$id");
         return $result->fetch_object();
     }
 
     public function delete($id)
     {
-        $result = $this->connection->query("DELETE FROM $this->table WHERE id=$id");
+        $stmt = $this->connection->prepare("DELETE FROM $this->table WHERE id=?"); // prepare the sql statement
+        $stmt->bind_param('i', $id); // bind the params per data type
+        $stmt->execute(); // execute the statement on the DB
+        $result = $stmt->get_result(); // get the result of the execution
+        $stmt->close();
+        // $result = $this->connection->query("DELETE FROM $this->table WHERE id=$id");
         return $result;
     }
 
@@ -52,19 +62,45 @@ class Model
 
         $keys = '';
         $values = '';
+        $data_types = '';
+        $value_arr = array();
 
         foreach ($data as $key => $value) {
 
             if ($key != \array_key_last($data)) {
                 $keys .= $key . ', ';
-                $values .= "'$value', ";
+                $values .= "?, ";
             } else {
                 $keys .= $key;
-                $values .= "'$value'";
+                $values .= "?";
             }
+
+            switch ($key) {
+                case 'id':
+                case 'user_id':
+                case 'post_id':
+                case 'tag_id':
+                    $data_types .= "i";
+                    break;
+
+                default:
+                    $data_types .= "s";
+                    break;
+            }
+
+            $value_arr[] = $value;
         }
+
+        // $stmt = $this->connection->prepare("INSERT INTO posts (title, content, user_id) VALUES (?,?,?)");
+        // $stmt->bind_param('ssi', 'test sql in.', 'testing content', '1');
+        // $stmt->execute();
+        // $stmt->close();
+
         $sql = "INSERT INTO $this->table ($keys) VALUES ($values)";
-        $this->connection->query($sql);
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param($data_types, ...$value_arr); // ...$value_arr == 'test sql in.', 'testing content', '1'
+        $stmt->execute();
+        $stmt->close();
     }
 
     public function update($data)

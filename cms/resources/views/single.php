@@ -14,6 +14,14 @@
         Created: <?= $data->post->created_at ?>
     </p>
 
+    <p class="mb-3">
+        Tags: <?php
+                foreach ($data->post->tags as $tag) {
+                    echo "#$tag ";
+                }
+                ?>
+    </p>
+
     <p>
         <?= $data->post->content ?>
     </p>

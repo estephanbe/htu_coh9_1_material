@@ -5,11 +5,14 @@ namespace Core\Controller;
 use Core\Base\Controller;
 use Core\Base\View;
 use Core\Helpers\Helper;
+use Core\Helpers\Tests;
 use Core\Model\Post;
 use Core\Model\Tag;
 
 class Posts extends Controller
 {
+
+    use Tests;
 
     public function render()
     {
@@ -39,6 +42,9 @@ class Posts extends Controller
 
     public function single()
     {
+
+        self::check_if_exists(isset($_GET['id']), "Please make sure the id is exists");
+
         $this->permissions(['post:read']);
         $this->view = 'posts.single';
         $post = new Post();

@@ -19,6 +19,8 @@ class Authentication extends Controller
         function __construct()
         {
                 $this->admin_view(false);
+                if (isset($_SESSION['user']))
+                        Helper::redirect('/dashboard');
         }
 
         /**
@@ -38,6 +40,7 @@ class Authentication extends Controller
          */
         public function validate()
         {
+
                 // if user doesn't exists, do not authenticate
                 $user = new User();
                 $logged_in_user = $user->check_username($_POST['username']);
@@ -46,8 +49,21 @@ class Authentication extends Controller
                         $this->invalid_redirect();
                 }
 
-                if ($_POST['password'] !== $logged_in_user->password) {
+                // $2y$10$jZ.Wc1DszU3G.N3/GdBZ8e.HWtp0GPNTui76M.hGyll2bkxte5Tgi
+                // => Decrypt (Unknown)
+                // => 1234567
+                // => 1234567 === $_POST['password']?
+                // Return => true/false
+                if (!\password_verify($_POST['password'], $logged_in_user->password)) {
                         $this->invalid_redirect();
+                }
+
+
+
+
+                if (isset($_POST['remember_me'])) {
+                        // DO NOT ADD USER ID TO THE COOKIES - SECURITY BREACH!!!!!
+                        \setcookie('user_id', $logged_in_user->id, time() + (86400 * 30)); // 86400 = 1 day (60*60*24)
                 }
 
                 $_SESSION['user'] = array(
@@ -57,6 +73,7 @@ class Authentication extends Controller
                         'is_admin_view' => true
                 );
 
+
                 Helper::redirect('/dashboard');
         }
 
@@ -64,7 +81,7 @@ class Authentication extends Controller
         {
                 \session_destroy();
                 \session_unset();
-
+                \setcookie('user_id', '', time() - 3600); // destroy the cookie by setting a past expiry date
                 Helper::redirect('/');
         }
 
@@ -72,5 +89,6 @@ class Authentication extends Controller
         {
                 $_SESSION['error'] = "Invalid Username or Password";
                 Helper::redirect('/login');
+                exit();
         }
 }

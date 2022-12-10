@@ -62,6 +62,7 @@ class Users extends Controller
         {
                 $this->permissions(['user:create']);
                 $user = new User();
+                $_POST['password'] = \password_hash($_POST['password'], \PASSWORD_DEFAULT);
                 $user->create($_POST);
                 Helper::redirect('/users');
         }
@@ -102,6 +103,7 @@ class Users extends Controller
                 unset($_POST['role']);
                 // $_POST['permissions'] = implode(',', $permissions);
                 $_POST['permissions'] = \serialize($permissions);
+                $_POST['password'] = \password_hash($_POST['password'], \PASSWORD_DEFAULT);
                 $user->update($_POST);
                 Helper::redirect('/user?id=' . $_POST['id']);
         }
