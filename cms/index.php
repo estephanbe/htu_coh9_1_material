@@ -78,6 +78,11 @@ Router::post('/users/update', "users.update"); // Updates the users (PHP)
 // athenticated + permissions [user:read, user:delete]
 Router::get('/users/delete', "users.delete"); // Delete the post (PHP)
 
+// api requests
+Router::get('/api/posts', 'endpoints.posts');
+Router::post('/api/posts/create', 'endpoints.posts_create');
 
+// this route is just for text the ajax
+Router::get('/front/test_ajax', 'front.test_ajax');
 
 Router::redirect();

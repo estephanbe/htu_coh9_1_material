@@ -77,4 +77,9 @@ class Front extends Controller
         $selected_post->tags = $final_tags;
         $this->data['post'] = $selected_post;
     }
+
+    function test_ajax()
+    {
+        $this->view = "test_ajax";
+    }
 }
